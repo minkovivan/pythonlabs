@@ -1,0 +1,19 @@
+import sys
+import math
+
+def add(a, b):
+    return a + b
+def multiply(a, b):
+    return a * b
+def minus(a, b):
+    return a - b
+def divide(a, b):
+    return a / b
+
+answer = ''
+result = 'answer = ' + sys.argv[1] + '(' + sys.argv[2]
+for i in range(3, len(sys.argv)):
+     result += ', ' + sys.argv[i]
+result += ')'
+exec(result)
+print(answer)
