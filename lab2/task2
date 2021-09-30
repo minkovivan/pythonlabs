@@ -1,0 +1,2 @@
+class Rational:
+    def __init__(self, numenator=1, denumenator=1):
