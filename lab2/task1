@@ -1,0 +1,25 @@
+class Rectangle:
+    def __init__(self):
+        self.__length = 1
+        self.__width = 1
+
+    def area(self):
+        return self.__length * self.__width
+
+    def perimeter(self):
+        return (self.__length + self.__width) * 2
+
+    def setter(self, length, width):
+        if 0.0 <= length <= 20.0 and 0.0 <= width <= 20.0:
+            self.__length = length
+            self.__width = width
+
+    def getter(self):
+        print("Rectangle length is " + str(self.__length))
+        print("Rectangle width is " + str(self.__width))
+
+newRectangle = Rectangle()
+newRectangle.setter(2.4, 15.5)
+print("Perimeter of the rectangle is " + str(newRectangle.perimeter()))
+print("Area of rectangle is " + str(newRectangle.area()))
+newRectangle.getter()
