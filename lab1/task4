@@ -1,0 +1,22 @@
+def max_weight(sack_capacity, bars):
+    memo_table = [[0 for col in range(sack_capacity + 1)] for row in range(len(bars))]
+    for bar_i in range(0, len(bars)):
+        for max_w_col in range(0, sack_capacity + 1):
+            if bars[bar_i] <= max_w_col:
+                if bar_i == 0:
+                    memo_table[bar_i][max_w_col] = bars[bar_i]
+                elif bars[bar_i] + memo_table[bar_i - 1][max_w_col - bars[bar_i] - 1] <= max_w_col:
+                    memo_table[bar_i][max_w_col] = max(
+                        bars[bar_i] + memo_table[bar_i - 1][max_w_col - bars[bar_i]], memo_table[bar_i - 1][max_w_col])
+                else:
+                    memo_table[bar_i][max_w_col] = max(
+                        bars[bar_i], memo_table[bar_i - 1][max_w_col])
+            else:
+                memo_table[bar_i][max_w_col] = memo_table[bar_i - 1][max_w_col]
+
+    print('max weight =', memo_table[-1][-1])
+
+
+sack_capacity = int(input('Enter sack size: '))
+gold_bars = [int(el) for el in input('Number of gold bars: ').split()]
+max_weight(sack_capacity, gold_bars)
